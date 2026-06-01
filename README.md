@@ -39,5 +39,9 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
   
 
 
+## Diagrama de clases
 
+<p align="center">
+  <img src="diagrama_clases.png" alt="Diagrama de Clases" width="600">
+</p>
 

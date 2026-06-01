@@ -106,7 +106,7 @@ public class MotorJuego {
     // Sistema de Logros/Recompensas
     private void verificarLogros() {
         if (!logroDesbloqueado && movimientos >= 1) {
-            // Condición: Poner la primera ficha (Iniciar las hostilidades)
+            // Condición: Poner la primera ficha  (Iniciar las hostilidades)
             System.out.println("[LOGRO DESBLOQUEADO] -> 'Primer de muchos': Has colocado la primera pieza en el tablero.");
             logroDesbloqueado = true;
         }

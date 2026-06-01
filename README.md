@@ -106,3 +106,20 @@ Flujos Alternativos: 1. Lista de entidades vacía: Si la partida acaba de comenz
 Postcondiciones: El sistema permanece exactamente en el mismo estado en el que estaba antes de la invocación (operación de solo lectura). Se obtiene un String listo para persistencia.
 
 Reglas de Negocio: El formato de salida debe simular estrictamente la estructura de un objeto JSON plano válido para garantizar la compatibilidad interoperable y el desacoplamiento técnico.
+
+
+## Herramientas usadas para este proyecto
+
+Para este juego se ha usado la herramiento Gemini de Google y la web PlantUML para la creacion de los diagramas. Algunos ejemplos de prompts utizados son:
+
+
+Genera el  codigo para la estructura de un diagrama de clases de plantUML con el codigo generado del juego
+
+Ocurre un error a la hora de implementar la clase EntidadVideojuego en MotorJuego. Posiblemnte se deba a errores del constructor. Modificalo para que sea adecuado para tanto la clase MotorJuego como para el resto que la usen
+
+
+La IA tuvo un error a la hora de heredar clases por el constructor por lo que el ultimo prompt que he puesto soluciona dicho problema
+
+El codigo ha sido rapido y eficaz por lo que no es de extrañar que mucha gente la use para la generacion de codigos sencillos o para corregir errores
+
+

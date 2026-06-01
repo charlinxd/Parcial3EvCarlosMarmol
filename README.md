@@ -45,3 +45,11 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
   <img src="diagrama_clases.png" alt="Diagrama de Clases" width="600">
 </p>
 
+
+
+## Diagrama de casos
+
+<p align="center">
+  <img src="diagrama_casos.png" alt="Diagrama de Casos" width="600">
+</p>
+

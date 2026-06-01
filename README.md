@@ -36,11 +36,8 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
 
 1. Clona o descarga el repositorio con la estructura de paquetes correspondiente.
 2. Compila los archivos fuentes de Java:
-   ```bash
-   javac *.java
+  
 
 
 
 
-
-   ![Diagrama de Clases Tres en Raya](diagrama_clases.png)

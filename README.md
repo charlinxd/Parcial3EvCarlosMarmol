@@ -55,7 +55,7 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
 
 
 
-## Caso de Uso 1: CU-01 Colocar Ficha en Tablero
+## Caso de Uso 1:  Colocar Ficha en Tablero
 
 Nombre: CU-01 Colocar Ficha en Tablero
 
@@ -82,3 +82,27 @@ Postcondiciones: El tablero cuenta con una entidad más en su colección, el tur
 
 Reglas de Negocio: No se pueden colocar fichas si el estado del juego es PAUSA o GAME_OVER.* Un jugador no puede colocar dos fichas seguidas; el sistema fuerza la alternancia estricta del turno (X -> O -> X).* Las coordenadas deben estar dentro del rango indexado del tablero (matriz $3 \times 3$, de 0 a 2).
 
+
+## Caso de Uso 2: Realizar un guardado rapido
+
+Nombre: Realizar Guardado Rápido (Quick Save)
+
+Objetivo: Exportar instantáneamente el estado actual de la lógica de la partida a una cadena de texto formateada para su posterior persistencia o análisis.
+
+Actor Principal: Jugador / Sistema Automatizado.
+
+Precondiciones: El sistema debe estar inicializado (puede estar en cualquier estado: JUGANDO, PAUSA o MENU).
+
+Flujo Principal: 1. El actor solicita la congelación y exportación del estado actual.
+2. El MotorJuego activa el método generarQuickSave().
+3. El motor inicializa un constructor de cadenas (StringBuilder) abriendo un objeto JSON simulado.
+4. Se serializan los atributos primitivos del control: estadoGeneral, turnoActual y movimientos.
+5. El motor itera de forma secuencial la lista de entidades activas en la partida.
+6. Por cada EntidadVideojuego (Ficha) encontrada, se extrae y formatea su tipo y sus coordenadas x e y.
+7. Se empaqueta la cadena final y se retorna hacia el solicitante (Main), imprimiendo el volcado plano estructurado por consola.
+
+Flujos Alternativos: 1. Lista de entidades vacía: Si la partida acaba de comenzar o está en el MENU, el campo de entidades en el string resultante se genera vacío ("entidades":[]), guardando correctamente el estado del motor sin lanzar excepciones.
+
+Postcondiciones: El sistema permanece exactamente en el mismo estado en el que estaba antes de la invocación (operación de solo lectura). Se obtiene un String listo para persistencia.
+
+Reglas de Negocio: El formato de salida debe simular estrictamente la estructura de un objeto JSON plano válido para garantizar la compatibilidad interoperable y el desacoplamiento técnico.

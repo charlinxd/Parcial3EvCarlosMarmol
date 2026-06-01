@@ -53,3 +53,32 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
   <img src="diagrama_casos.png" alt="Diagrama de Casos" width="600">
 </p>
 
+
+
+## Caso de Uso 1: CU-01 Colocar Ficha en Tablero
+
+Nombre: CU-01 Colocar Ficha en Tablero
+
+Objetivo: Permitir al jugador posicionar una ficha de su tipo ('X' o 'O') en una coordenada válida de la matriz de juego para avanzar en la partida.
+
+Actor Principal :Jugador (Simulado a través de Main / GestorEntradas).
+
+Precondiciones: El MotorJuego debe encontrarse estrictamente en estado JUGANDO y debe ser el turno del jugador que emite el comando.
+
+Flujo Principal: 1. El jugador envía un comando de acción con las coordenadas deseadas (Ej: "PONER_FICHA,1,1"). 
+2. El GestorEntradas intercepta el texto, extrae la fila y la columna, e invoca al MotorJuego.
+3. El motor verifica que la celda destino esté vacía.
+4. El motor crea una nueva instancia de Ficha con la posición y el turno correspondiente.
+5. La ficha se añade a la lista de entidades y se incrementa el contador de movimientos.
+6. El motor comprueba si el movimiento genera una condición de victoria o empate (Ver Flujos Alternativos).
+7. El motor cambia el turnoActual al jugador contrario.
+8. El ciclo actualizar() imprime el estado visual del tablero por consola.
+
+Flujos Alternativos: 1. Celda ya ocupada: Si en el paso 3 se detecta que ya existe una entidad en esas coordenadas, el motor imprime un log de error (¡Movimiento inválido!), ignora la inserción y mantiene el turno actual.
+2. Condición de Victoria alcanzada: Si en el paso 6 el método comprobarVictoria() devuelve true, el motor imprime el mensaje de Game Over por victoria del jugador actual y cambia el estado general a GAME_OVER
+3. Condición de Empate alcanzada: Si en el paso 6 el contador de movimientos llega a 9 y no hay ganador, el motor imprime un mensaje de empate técnico y cambia el estado general a GAME_OVER.
+
+Postcondiciones: El tablero cuenta con una entidad más en su colección, el turno se ha alternado (salvo fin de partida) y el estado de la matriz se actualiza.
+
+Reglas de Negocio: No se pueden colocar fichas si el estado del juego es PAUSA o GAME_OVER.* Un jugador no puede colocar dos fichas seguidas; el sistema fuerza la alternancia estricta del turno (X -> O -> X).* Las coordenadas deben estar dentro del rango indexado del tablero (matriz $3 \times 3$, de 0 a 2).
+

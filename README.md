@@ -40,4 +40,7 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
    javac *.java
 
 
+
+
+
    ![Diagrama de Clases Tres en Raya](diagrama_clases.png)

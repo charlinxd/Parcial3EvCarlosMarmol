@@ -38,3 +38,6 @@ La arquitectura del sistema se limita estrictamente a **5 clases**, distribuyend
 2. Compila los archivos fuentes de Java:
    ```bash
    javac *.java
+
+
+   ![Diagrama de Clases Tres en Raya](diagrama_clases.png)
